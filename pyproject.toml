@@ -4,7 +4,9 @@ version = "0.0.0"
 description = "Protocol-first scaffold for unified document-level event extraction evaluation."
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "scipy>=1.14",
+]
 
 [dependency-groups]
 dev = [

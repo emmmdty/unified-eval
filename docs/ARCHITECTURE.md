@@ -20,13 +20,15 @@ This repository is dedicated to unified evaluation. It does not own dataset prep
   invalid-output accounting for protocol Section 6.
 - `src/unified_eval/normalization.py`: strict unified-metric normalization and
   normalization config hashing for protocol Section 9.1.
+- `src/unified_eval/matching.py`: frozen event-type-constrained Hungarian
+  matching and `matching_log.csv` row generation for protocol Section 7.
 - `configs/strict_normalizer_v1.json`: frozen strict normalizer v1 config.
 - `tests/`: smoke tests, snapshot tests, and protocol-v1 contract tests.
 - `scripts/`: future thin command-line wrappers.
 - `docs/`: frozen protocol, architecture notes, and compliance planning.
 
-No matching, scoring, full report generation, or Track A official adapter
-behavior is implemented yet.
+No scoring, full report generation, or Track A official adapter behavior is
+implemented yet.
 
 ## Isolated Data Snapshot
 
@@ -73,7 +75,11 @@ Track B unified strict metrics.
 
 ### Matching
 
-Matching should implement deterministic event-type-constrained Hungarian alignment by `(dataset, split, document_id, event_type)`. Cross-event-type rescue is forbidden.
+Matching implements deterministic event-type-constrained Hungarian alignment by
+`(dataset, split, document_id, event_type)`. It preserves duplicate records,
+uses `scipy.optimize.linear_sum_assignment`, treats zero-score real assignments
+as unmatched, emits protocol-shaped matching log rows, and records a stable
+matcher config hash. Cross-event-type rescue is forbidden.
 
 ### Scoring
 
@@ -95,3 +101,6 @@ prediction/gold parsing, legacy-shape rejection, schema registry metadata, and
 invalid value-type diagnostics.
 
 Phase 3 adds protocol-v1 validation tests for T06-T10, T28, and T30.
+
+Phase 4 adds protocol-v1 strict normalization tests for T19-T22. Phase 5 adds
+protocol-v1 matching tests for T16-T18 and T23.

@@ -4,13 +4,14 @@
 
 The frozen authority is `docs/DEE Evaluation Protocol Final.md`. Implementations must follow that protocol exactly.
 
-## Phase 4 Status
+## Phase 5 Status
 
 This repository implements the frozen canonical contract layer for protocol-v1
 prediction and gold JSONL, plus the frozen validation/accounting layer for
 malformed prediction input. It also implements strict normalization for the
 unified strict metric exactly within the frozen protocol's allowed character
-rules.
+rules. Phase 5 adds frozen event-type-constrained Hungarian matching for
+already normalized role-value records.
 
 Implemented:
 
@@ -34,11 +35,22 @@ Implemented:
 - normalization log row generation for `normalization_log.csv`;
 - stable `normalization_config_hash` generation for the strict normalizer
   config;
-- protocol-v1 normalization tests for T19-T22.
+- protocol-v1 normalization tests for T19-T22;
+- frozen matching record representation as `role -> frozenset[str]`;
+- grouping by `(dataset, split, document_id, event_type)`;
+- `scipy.optimize.linear_sum_assignment` as the protocol-v1 Hungarian
+  dependency, with clear failure when SciPy is unavailable;
+- zero-score real pred-gold assignments converted to unmatched prediction plus
+  unmatched gold;
+- deterministic tie-breaking for total pair score, exact matched atoms,
+  FP+FN, and lexicographic `(pred_idx, gold_idx)` pair lists;
+- protocol-shaped `matching_log.csv` row generation and stable
+  `matching_config_hash`;
+- protocol-v1 matching tests for T16-T18 and T23.
 
 Not implemented yet:
 
-- matching or scoring logic;
+- scoring logic;
 - Track A official adapter implementations;
 - copied dataset files;
 - dataset splitting or data preprocessing.
