@@ -1,0 +1,27 @@
+# Python environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Build outputs
+build/
+dist/
+*.egg-info/
+
+# Coverage outputs
+.coverage
+htmlcov/
+
+# Local evaluation artifacts and copied data
+data/
+outputs/
+results/
+artifacts/
+reports/generated/
+
+# OS/editor noise
+.DS_Store
+*.swp
