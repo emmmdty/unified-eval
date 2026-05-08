@@ -38,3 +38,19 @@ uv run ruff check .
 uv run ruff format --check .
 make check
 ```
+
+## Data Snapshot
+
+Create an isolated local snapshot from the sibling data project:
+
+```bash
+uv run python scripts/copy_data_snapshot.py \
+  --source-root ~/myProjects/masterProjects/DEE/data \
+  --target-root data
+uv run python scripts/verify_data_snapshot.py --snapshot-root data
+```
+
+The generated `data/` tree is ignored by Git. The copy allowlist is limited to
+schemas, split manifests, evaluator-gold files, samples, source hash/stat
+manifests, and small official-adapter samples. It does not modify the source
+directory and does not re-split or repair data.

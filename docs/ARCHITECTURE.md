@@ -18,6 +18,18 @@ This repository is dedicated to unified evaluation. It does not own dataset prep
 
 No evaluator behavior is implemented in Phase 0.
 
+## Isolated Data Snapshot
+
+`scripts/copy_data_snapshot.py` copies a protocol-scoped allowlist from
+`~/myProjects/masterProjects/DEE/data` into local `data/`. The allowlist includes
+schemas, split manifests, evaluator-gold files, source hash/stat manifests,
+samples, and small official-adapter samples.
+
+`scripts/verify_data_snapshot.py` verifies the generated snapshot manifest with
+SHA-256 hashes. The snapshot is a local artifact ignored by Git; it must not use
+symlinks, mutate the source project, re-split datasets, repair gold data, or edit
+schemas.
+
 ## Planned Modules
 
 ### Canonical I/O
