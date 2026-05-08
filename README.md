@@ -4,11 +4,13 @@
 
 The frozen authority is `docs/DEE Evaluation Protocol Final.md`. Implementations must follow that protocol exactly.
 
-## Phase 3 Status
+## Phase 4 Status
 
 This repository implements the frozen canonical contract layer for protocol-v1
 prediction and gold JSONL, plus the frozen validation/accounting layer for
-malformed prediction input.
+malformed prediction input. It also implements strict normalization for the
+unified strict metric exactly within the frozen protocol's allowed character
+rules.
 
 Implemented:
 
@@ -24,11 +26,19 @@ Implemented:
   `invalid_cases`, illegal-event FP atoms, illegal-role FP atoms,
   invalid-value FP atoms, and duplicate value logs;
 - validation coverage for frozen protocol T06-T10, T28, and T30 without invoking
-  matching or scoring.
+  matching or scoring;
+- strict normalization under `configs/strict_normalizer_v1.json`, covering
+  Unicode NFKC, full-width ASCII conversion, whitespace trimming/collapse,
+  listed Chinese punctuation mapping, thousands separators inside digit
+  sequences, and zero-width/invisible control removal;
+- normalization log row generation for `normalization_log.csv`;
+- stable `normalization_config_hash` generation for the strict normalizer
+  config;
+- protocol-v1 normalization tests for T19-T22.
 
 Not implemented yet:
 
-- matching, scoring, or normalization logic;
+- matching or scoring logic;
 - Track A official adapter implementations;
 - copied dataset files;
 - dataset splitting or data preprocessing.

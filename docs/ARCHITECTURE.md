@@ -18,12 +18,15 @@ This repository is dedicated to unified evaluation. It does not own dataset prep
 - `src/unified_eval/io.py`: canonical prediction/gold JSONL readers.
 - `src/unified_eval/validation.py`: tolerant prediction validation and
   invalid-output accounting for protocol Section 6.
+- `src/unified_eval/normalization.py`: strict unified-metric normalization and
+  normalization config hashing for protocol Section 9.1.
+- `configs/strict_normalizer_v1.json`: frozen strict normalizer v1 config.
 - `tests/`: smoke tests, snapshot tests, and protocol-v1 contract tests.
 - `scripts/`: future thin command-line wrappers.
 - `docs/`: frozen protocol, architecture notes, and compliance planning.
 
-No matching, scoring, normalization, or Track A official adapter behavior is
-implemented yet.
+No matching, scoring, full report generation, or Track A official adapter
+behavior is implemented yet.
 
 ## Isolated Data Snapshot
 
@@ -62,7 +65,11 @@ it does not run matching, scoring, or normalization.
 
 ### Strict Normalization
 
-Strict normalization should implement only protocol Section 9.1. Auxiliary-only normalization belongs in a separate path and must never change Track B unified strict metrics.
+Strict normalization implements only protocol Section 9.1. It emits
+CSV-serializable normalization log rows and a stable
+`normalization_config_hash` for `configs/strict_normalizer_v1.json`.
+Auxiliary-only normalization belongs in a separate path and must never change
+Track B unified strict metrics.
 
 ### Matching
 

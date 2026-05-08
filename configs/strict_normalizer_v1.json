@@ -1,0 +1,37 @@
+{
+  "schema_version": "strict-normalizer-config-v1",
+  "normalizer_name": "strict_normalizer_v1",
+  "track": "unified_strict",
+  "rule_order": [
+    "remove_invisible_controls",
+    "fullwidth_ascii_to_halfwidth",
+    "unicode_nfkc",
+    "strip_whitespace",
+    "collapse_whitespace",
+    "punctuation_to_ascii",
+    "remove_thousands_separators"
+  ],
+  "punctuation_map": {
+    "（": "(",
+    "）": ")",
+    "，": ",",
+    "；": ";",
+    "：": ":",
+    "“": "\"",
+    "”": "\"",
+    "「": "\"",
+    "」": "\"",
+    "『": "\"",
+    "』": "\"",
+    "‘": "'",
+    "’": "'"
+  },
+  "thousands_separator": ",",
+  "zero_width_chars": [
+    "\u200b",
+    "\u200c",
+    "\u200d",
+    "\u2060",
+    "\ufeff"
+  ]
+}

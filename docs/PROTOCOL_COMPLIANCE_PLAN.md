@@ -14,7 +14,15 @@ Phase 3 status: prediction validation code is implemented in
 prediction input and invalid-case accounting only; matching, scoring,
 normalization, and Track A official adapters remain unimplemented.
 
-| Test ID | Protocol Test | Future Target Module | Phase 0 Status |
+Phase 4 status: strict normalization code is implemented in
+`src/unified_eval/normalization.py`, with frozen config
+`configs/strict_normalizer_v1.json` and focused tests in
+`tests/protocol_v1/test_t19_t22_normalization.py`. This phase covers strict
+normalization, normalization log rows, and strict normalizer config hashing
+only; matching, scoring, full report generation, auxiliary normalized scoring,
+and Track A official adapters remain unimplemented.
+
+| Test ID | Protocol Test | Future Target Module | Current Status |
 | --- | --- | --- | --- |
 | T01 | Gold vs Gold | Track B scorer plus Track A adapter fixtures | Planned |
 | T02 | Empty Prediction | Scoring and unmatched gold handling | Planned |
@@ -34,10 +42,10 @@ normalization, and Track A official adapters remain unimplemented.
 | T16 | Multiple Same-Type Records | Hungarian matching | Planned |
 | T17 | Greedy vs Hungarian Difference | Official adapter comparison and unified matcher | Planned |
 | T18 | Zero-Score Pair | Matching and unmatched conversion | Planned |
-| T19 | Strict Normalization | Strict normalizer | Planned |
-| T20 | Auxiliary Normalization Isolation | Auxiliary normalizer isolation | Planned |
-| T21 | No Auto Split | Strict normalizer and prediction repair guard | Planned |
-| T22 | No External Alias | Strict normalizer and alias repair guard | Planned |
+| T19 | Strict Normalization | Strict normalizer | Implemented in Phase 4 |
+| T20 | Auxiliary Normalization Isolation | Auxiliary normalizer isolation | Implemented in Phase 4 for unified strict isolation; auxiliary scoring planned |
+| T21 | No Auto Split | Strict normalizer and prediction repair guard | Implemented in Phase 4 |
+| T22 | No External Alias | Strict normalizer and alias repair guard | Implemented in Phase 4 |
 | T23 | Tie-Breaking Determinism | Matcher tie-breaking and logs | Planned |
 | T24 | Official Adapter Regression | Track A official adapters | Planned |
 | T25 | Unified Regression | End-to-end Track B fixtures | Planned |
@@ -60,8 +68,10 @@ normalization, and Track A official adapters remain unimplemented.
 
 Phase 2 completes steps 1-2 only for the canonical contract surface. Phase 3
 adds invalid-case CSV serialization and duplicate role-value logs for prediction
-validation. Matching, scoring, normalization, official adapters, full duplicate
-record handling, and result manifests remain unimplemented.
+validation. Phase 4 completes step 3 for strict unified normalization only.
+Matching, scoring, auxiliary normalized scoring, official adapters, full
+duplicate record handling, full report generation, and result manifests remain
+unimplemented.
 
 ## Non-Goals
 
