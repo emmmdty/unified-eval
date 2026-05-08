@@ -1,0 +1,392 @@
+{
+  "T01": {
+    "counts": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "official": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "T02": {
+    "counts": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  },
+  "T03": {
+    "counts": {
+      "tp": 0,
+      "fp": 2,
+      "fn": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  },
+  "T04": {
+    "counts": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  },
+  "T05": {
+    "counts": {
+      "tp": 0,
+      "fp": 1,
+      "fn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  },
+  "T06": {
+    "counts": {
+      "tp": 0,
+      "fp": 1,
+      "fn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "invalid_codes": ["illegal_event_type"],
+    "fp_atoms": ["A"]
+  },
+  "T07": {
+    "counts": {
+      "tp": 1,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6666666666666666
+    },
+    "invalid_codes": ["illegal_role"],
+    "fp_atoms": ["illegal-role-value"]
+  },
+  "T08": {
+    "counts": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "invalid_codes": ["invalid_json"],
+    "empty_prediction_document_ids": ["doc_001"]
+  },
+  "T09": {
+    "counts": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "invalid_codes": ["invalid_record_type"]
+  },
+  "T10": {
+    "counts": {
+      "tp": 0,
+      "fp": 1,
+      "fn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "invalid_codes": ["invalid_value_type"],
+    "fp_atoms": ["1000"]
+  },
+  "T11": {
+    "counts": {
+      "tp": 1,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6666666666666666
+    }
+  },
+  "T12": {
+    "counts": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6666666666666666
+    }
+  },
+  "T13": {
+    "counts": {
+      "tp": 0,
+      "fp": 1,
+      "fn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  },
+  "T14": {
+    "counts": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "T15": {
+    "counts": {
+      "tp": 0,
+      "fp": 1,
+      "fn": 2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  },
+  "T16": {
+    "counts": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.75,
+      "f1": 0.8571428571428571
+    },
+    "matching_log": [
+      {
+        "document_id": "doc_001",
+        "event_type": "EventA",
+        "pred_idx": "0",
+        "gold_idx": "1",
+        "pair_score": "1",
+        "matched": "true",
+        "matched_roles": "[\"r1\"]"
+      },
+      {
+        "document_id": "doc_001",
+        "event_type": "EventA",
+        "pred_idx": "1",
+        "gold_idx": "0",
+        "pair_score": "2",
+        "matched": "true",
+        "matched_roles": "[\"r1\",\"r2\"]"
+      }
+    ]
+  },
+  "T17": {
+    "counts": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.75,
+      "f1": 0.8571428571428571
+    },
+    "greedy_total": 2,
+    "hungarian_total": 3
+  },
+  "T18": {
+    "counts": {
+      "tp": 0,
+      "fp": 1,
+      "fn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "matching_log": [
+      {
+        "document_id": "doc_001",
+        "event_type": "EventA",
+        "pred_idx": "0",
+        "gold_idx": "0",
+        "pair_score": "0",
+        "matched": "false",
+        "matched_roles": "[]"
+      }
+    ]
+  },
+  "T19": {
+    "counts": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "applied_rules": [
+      "collapse_whitespace",
+      "fullwidth_ascii_to_halfwidth",
+      "punctuation_to_ascii",
+      "remove_thousands_separators",
+      "remove_invisible_controls",
+      "strip_whitespace",
+      "unicode_nfkc"
+    ]
+  },
+  "T20": {
+    "counts": {
+      "tp": 0,
+      "fp": 3,
+      "fn": 3,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "aux_normalized": {
+      "enabled": true,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "T21": {
+    "counts": {
+      "tp": 0,
+      "fp": 1,
+      "fn": 2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  },
+  "T22": {
+    "counts": {
+      "tp": 0,
+      "fp": 1,
+      "fn": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  },
+  "T23": {
+    "matching_log": [
+      {
+        "document_id": "doc_001",
+        "event_type": "EventA",
+        "pred_idx": "0",
+        "gold_idx": "0",
+        "pair_score": "1",
+        "matched": "true",
+        "matched_roles": "[\"r1\"]"
+      },
+      {
+        "document_id": "doc_001",
+        "event_type": "EventA",
+        "pred_idx": "1",
+        "gold_idx": "1",
+        "pair_score": "0",
+        "matched": "false",
+        "matched_roles": "[]"
+      }
+    ]
+  },
+  "T24": {
+    "official_results": {
+      "ChFinAnn": {
+        "available": true,
+        "score_type": "official",
+        "precision": 0.75,
+        "recall": 0.6,
+        "f1": 0.6666666666666666
+      },
+      "DocFEE": {
+        "available": true,
+        "score_type": "official",
+        "precision": 0.5,
+        "recall": 0.25,
+        "f1": 0.3333333333333333
+      },
+      "DuEE-Fin": {
+        "available": true,
+        "score_type": "offline_official_style",
+        "precision": 0.8,
+        "recall": 0.4,
+        "f1": 0.5333333333333333
+      }
+    }
+  },
+  "T25": {
+    "counts": {
+      "tp": 1,
+      "fp": 5,
+      "fn": 4,
+      "precision": 0.16666666666666666,
+      "recall": 0.2,
+      "f1": 0.1818181818181818
+    }
+  },
+  "T26": {
+    "config": {
+      "schema_hash": "sha256:schema",
+      "split_hash": "sha256:split",
+      "normalization_config_hash": "sha256:698f7ef6fc58c459f132c93e8ae337798558e1228a4e8f8d5f90f44d9c44e487",
+      "matching_config_hash": "sha256:83bf8563da60a0a98511b431b96eb5bcb3140be55e387d98254976193eb27abb",
+      "leaderboard_valid": true,
+      "mismatched_hashes": []
+    }
+  },
+  "T27": {
+    "mutation_guard": {
+      "leaderboard_valid": false,
+      "mismatched_hashes": ["normalization_config_hash"]
+    }
+  },
+  "T28": {
+    "counts": {
+      "tp": 1,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6666666666666666
+    },
+    "invalid_role_rate": 0.5,
+    "invalid_codes": ["illegal_role"]
+  },
+  "T29": {
+    "counts": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "duplicate_value_log": [
+      {
+        "document_id": "doc_001",
+        "event_type": "EventA",
+        "role": "r1",
+        "value": "A",
+        "count": 2
+      }
+    ]
+  },
+  "T30": {
+    "invalid_codes": ["unknown_document_id", "split_mismatch"],
+    "valid_record_count": 0
+  }
+}
