@@ -24,13 +24,16 @@ This repository is dedicated to unified evaluation. It does not own dataset prep
   matching and `matching_log.csv` row generation for protocol Section 7.
 - `src/unified_eval/scoring.py`: final unified strict role-value TP/FP/FN and
   micro P/R/F1 scoring for protocol Sections 3.5, 3.6, and 8.
+- `src/unified_eval/reporting.py`: required protocol-v1 report artifact writer
+  for overall metrics, logs, config metadata, dependency versions, commit hash,
+  and config mutation guard outputs.
 - `configs/strict_normalizer_v1.json`: frozen strict normalizer v1 config.
 - `tests/`: smoke tests, snapshot tests, and protocol-v1 contract tests.
 - `scripts/`: future thin command-line wrappers.
 - `docs/`: frozen protocol, architecture notes, and compliance planning.
 
-No full report generation or Track A official adapter behavior is implemented
-yet.
+No Track A official adapter behavior or auxiliary normalized scoring is
+implemented yet.
 
 ## Isolated Data Snapshot
 
@@ -97,6 +100,10 @@ Official adapters should preserve dataset-official behavior for comparability. T
 ### Reports And Logs
 
 Report generation should write the required machine-readable outputs: `overall_metrics.json`, `matching_log.csv`, `unmatched_cases.csv`, `error_cases.csv`, `invalid_cases.csv`, `normalization_log.csv`, `duplicate_log.csv`, and `config.json`.
+Phase 7 implements this artifact layer with stable CSV headers, separate Track A
+official and Track B unified strict metric blocks, disabled auxiliary-normalized
+placeholders, and reproducibility metadata including Python/SciPy/dependency
+versions and commit hash.
 
 ### Tests
 
@@ -109,4 +116,5 @@ Phase 3 adds protocol-v1 validation tests for T06-T10, T28, and T30.
 
 Phase 4 adds protocol-v1 strict normalization tests for T19-T22. Phase 5 adds
 protocol-v1 matching tests for T16-T18 and T23. Phase 6 adds protocol-v1
-scoring tests for T01-T05, T11-T15, and T25.
+scoring tests for T01-T05, T11-T15, and T25. Phase 7 adds report artifact
+tests for T26 and T27.

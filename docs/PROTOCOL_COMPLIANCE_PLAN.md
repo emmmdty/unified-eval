@@ -42,6 +42,14 @@ atom integration, no true-negative counting, and micro P/R/F1 aggregation only;
 full report generation, auxiliary normalized scoring, and Track A official
 adapters remain unimplemented.
 
+Phase 7 status: frozen report artifact generation is implemented in
+`src/unified_eval/reporting.py`, with focused tests in
+`tests/protocol_v1/test_t26_t27_report_artifacts.py`. This phase covers all
+required protocol-v1 output files, stable CSV headers, `overall_metrics.json`,
+`config.json`, dependency and commit metadata, config hash stability, and the
+test-time mutation guard. Track A official adapters and auxiliary normalized
+scoring remain unimplemented.
+
 | Test ID | Protocol Test | Future Target Module | Current Status |
 | --- | --- | --- | --- |
 | T01 | Gold vs Gold | Track B scorer plus Track A adapter fixtures | Unified scorer implemented in Phase 6; Track A adapter planned |
@@ -69,10 +77,10 @@ adapters remain unimplemented.
 | T23 | Tie-Breaking Determinism | Matcher tie-breaking and logs | Implemented in Phase 5 |
 | T24 | Official Adapter Regression | Track A official adapters | Planned |
 | T25 | Unified Regression | End-to-end Track B fixtures | Scoring golden fixture implemented in Phase 6; full report fixture planned |
-| T26 | Config Hash Stability | Config and hash utilities | Matcher config hash implemented in Phase 5; broader config manifest planned |
-| T27 | Test-Time Mutation Guard | Result manifest and hash validation | Planned |
+| T26 | Config Hash Stability | Config and hash utilities | Implemented in Phase 7 |
+| T27 | Test-Time Mutation Guard | Result manifest and hash validation | Implemented in Phase 7 |
 | T28 | Silent Drop Guard | Validation, logging, and FP accounting | Implemented in Phase 3 |
-| T29 | Duplicate Value Log | Value canonicalization and duplicate logs | Validation log implemented in Phase 3; scoring integration planned |
+| T29 | Duplicate Value Log | Value canonicalization and duplicate logs | Validation log implemented in Phase 3; duplicate report artifact emitted in Phase 7 |
 | T30 | Dataset Split Check | Dataset adapter and split validation | Implemented in Phase 3 |
 
 ## Implementation Order
@@ -90,9 +98,10 @@ Phase 2 completes steps 1-2 only for the canonical contract surface. Phase 3
 adds invalid-case CSV serialization and duplicate role-value logs for prediction
 validation. Phase 4 completes step 3 for strict unified normalization only.
 Phase 5 completes step 4 for frozen matching only. Phase 6 completes step 5 for
-final unified strict scoring only. Auxiliary normalized scoring, official
-adapters, full duplicate record reporting, full report generation, and result
-manifests remain unimplemented.
+final unified strict scoring only. Phase 7 completes step 6 for required
+machine-readable logs and reproducibility metadata. Auxiliary normalized
+scoring, official adapters, and full official-adapter result manifests remain
+unimplemented.
 
 ## Non-Goals
 

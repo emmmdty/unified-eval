@@ -79,6 +79,19 @@ INVALID_CASE_CSV_FIELDS = (
     "raw_line",
 )
 
+DUPLICATE_VALUE_LOG_CSV_FIELDS = (
+    "duplicate_type",
+    "source",
+    "document_id",
+    "line_number",
+    "record_index",
+    "event_type",
+    "role",
+    "value",
+    "count",
+    "record_json",
+)
+
 
 def validate_prediction_jsonl(
     path: Path | str,

@@ -4,7 +4,7 @@
 
 The frozen authority is `docs/DEE Evaluation Protocol Final.md`. Implementations must follow that protocol exactly.
 
-## Phase 6 Status
+## Phase 7 Status
 
 This repository implements the frozen canonical contract layer for protocol-v1
 prediction and gold JSONL, plus the frozen validation/accounting layer for
@@ -12,7 +12,8 @@ malformed prediction input. It also implements strict normalization for the
 unified strict metric exactly within the frozen protocol's allowed character
 rules. Phase 5 adds frozen event-type-constrained Hungarian matching for
 already normalized role-value records. Phase 6 adds final unified strict
-role-value micro scoring over matched and unmatched records.
+role-value micro scoring over matched and unmatched records. Phase 7 adds the
+frozen machine-readable report artifact layer.
 
 Implemented:
 
@@ -54,10 +55,22 @@ Implemented:
   and invalid values;
 - micro precision, recall, and F1 aggregation with no true-negative count;
 - protocol-v1 scoring tests for T01-T05, T11-T15, and T25.
+- required report artifact writing for `overall_metrics.json`,
+  `matching_log.csv`, `unmatched_cases.csv`, `error_cases.csv`,
+  `invalid_cases.csv`, `normalization_log.csv`, `duplicate_log.csv`, and
+  `config.json`;
+- stable CSV headers for every required log;
+- `overall_metrics.json` with separated official, unified strict,
+  auxiliary-normalized, and diagnostics sections;
+- `config.json` with schema/split hashes, normalizer/matcher configs and
+  hashes, Python/SciPy/dependency versions, commit hash, and mutation guard
+  status;
+- protocol-v1 report artifact tests for T26 and T27.
 
 Not implemented yet:
 
 - Track A official adapter implementations;
+- auxiliary normalized scoring beyond the disabled report placeholder;
 - copied dataset files;
 - dataset splitting or data preprocessing.
 
