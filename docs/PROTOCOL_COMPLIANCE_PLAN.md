@@ -32,23 +32,33 @@ matching log rows, and matcher config hashing only; scoring, full report
 generation, auxiliary normalized scoring, and Track A official adapters remain
 unimplemented.
 
+Phase 6 status: final unified strict scoring code is implemented in
+`src/unified_eval/scoring.py`, with focused tests in
+`tests/protocol_v1/test_t01_t05_t11_t15_scoring.py`,
+`tests/protocol_v1/test_t25_scoring_regression.py`, and the T25 golden fixture
+under `tests/fixtures/protocol_v1/`. This phase covers matched-pair schema-role
+TP/FP/FN accounting, unmatched prediction/gold accounting, invalid-output FP
+atom integration, no true-negative counting, and micro P/R/F1 aggregation only;
+full report generation, auxiliary normalized scoring, and Track A official
+adapters remain unimplemented.
+
 | Test ID | Protocol Test | Future Target Module | Current Status |
 | --- | --- | --- | --- |
-| T01 | Gold vs Gold | Track B scorer plus Track A adapter fixtures | Planned |
-| T02 | Empty Prediction | Scoring and unmatched gold handling | Planned |
-| T03 | Empty Gold | Scoring and unmatched prediction handling | Planned |
-| T04 | Empty Both | Scoring zero-count handling | Planned |
-| T05 | Wrong Event Type | Grouping and cross-type error handling | Planned |
+| T01 | Gold vs Gold | Track B scorer plus Track A adapter fixtures | Unified scorer implemented in Phase 6; Track A adapter planned |
+| T02 | Empty Prediction | Scoring and unmatched gold handling | Implemented in Phase 6 |
+| T03 | Empty Gold | Scoring and unmatched prediction handling | Implemented in Phase 6 |
+| T04 | Empty Both | Scoring zero-count handling | Implemented in Phase 6 |
+| T05 | Wrong Event Type | Grouping and cross-type error handling | Implemented in Phase 6 for unified scorer |
 | T06 | Illegal Event Type | Validation and invalid event logging | Implemented in Phase 3 |
 | T07 | Illegal Role | Validation and illegal role FP accounting | Implemented in Phase 3 |
 | T08 | Invalid JSON Line | Canonical I/O and invalid JSON logging | Implemented in Phase 3 |
 | T09 | Invalid Record | Canonical I/O and record-level validation | Implemented in Phase 3 |
 | T10 | Invalid Value Type | Value validation and invalid case logging | Implemented in Phase 3 |
-| T11 | Duplicate Prediction | Duplicate record handling and unmatched FP accounting | Matching preservation implemented in Phase 5; scoring planned |
-| T12 | Partial Record | Matched-pair TP/FN accounting | Planned |
-| T13 | Wrong Role Value | Matched-pair FP/FN accounting | Planned |
-| T14 | Multi-Value Order | Value-set representation | Planned |
-| T15 | Multi-Value Partial Overlap | Strict multi-value scoring | Planned |
+| T11 | Duplicate Prediction | Duplicate record handling and unmatched FP accounting | Implemented in Phase 6 |
+| T12 | Partial Record | Matched-pair TP/FN accounting | Implemented in Phase 6 |
+| T13 | Wrong Role Value | Matched-pair FP/FN accounting | Implemented in Phase 6 |
+| T14 | Multi-Value Order | Value-set representation | Implemented in Phase 6 |
+| T15 | Multi-Value Partial Overlap | Strict multi-value scoring | Implemented in Phase 6 |
 | T16 | Multiple Same-Type Records | Hungarian matching | Implemented in Phase 5 |
 | T17 | Greedy vs Hungarian Difference | Official adapter comparison and unified matcher | Implemented in Phase 5 for unified matcher; official adapter comparison planned |
 | T18 | Zero-Score Pair | Matching and unmatched conversion | Implemented in Phase 5 |
@@ -58,7 +68,7 @@ unimplemented.
 | T22 | No External Alias | Strict normalizer and alias repair guard | Implemented in Phase 4 |
 | T23 | Tie-Breaking Determinism | Matcher tie-breaking and logs | Implemented in Phase 5 |
 | T24 | Official Adapter Regression | Track A official adapters | Planned |
-| T25 | Unified Regression | End-to-end Track B fixtures | Planned |
+| T25 | Unified Regression | End-to-end Track B fixtures | Scoring golden fixture implemented in Phase 6; full report fixture planned |
 | T26 | Config Hash Stability | Config and hash utilities | Matcher config hash implemented in Phase 5; broader config manifest planned |
 | T27 | Test-Time Mutation Guard | Result manifest and hash validation | Planned |
 | T28 | Silent Drop Guard | Validation, logging, and FP accounting | Implemented in Phase 3 |
@@ -79,9 +89,10 @@ unimplemented.
 Phase 2 completes steps 1-2 only for the canonical contract surface. Phase 3
 adds invalid-case CSV serialization and duplicate role-value logs for prediction
 validation. Phase 4 completes step 3 for strict unified normalization only.
-Phase 5 completes step 4 for frozen matching only. Scoring, auxiliary normalized
-scoring, official adapters, full duplicate record reporting, full report
-generation, and result manifests remain unimplemented.
+Phase 5 completes step 4 for frozen matching only. Phase 6 completes step 5 for
+final unified strict scoring only. Auxiliary normalized scoring, official
+adapters, full duplicate record reporting, full report generation, and result
+manifests remain unimplemented.
 
 ## Non-Goals
 

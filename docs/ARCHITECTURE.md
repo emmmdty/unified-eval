@@ -22,13 +22,15 @@ This repository is dedicated to unified evaluation. It does not own dataset prep
   normalization config hashing for protocol Section 9.1.
 - `src/unified_eval/matching.py`: frozen event-type-constrained Hungarian
   matching and `matching_log.csv` row generation for protocol Section 7.
+- `src/unified_eval/scoring.py`: final unified strict role-value TP/FP/FN and
+  micro P/R/F1 scoring for protocol Sections 3.5, 3.6, and 8.
 - `configs/strict_normalizer_v1.json`: frozen strict normalizer v1 config.
 - `tests/`: smoke tests, snapshot tests, and protocol-v1 contract tests.
 - `scripts/`: future thin command-line wrappers.
 - `docs/`: frozen protocol, architecture notes, and compliance planning.
 
-No scoring, full report generation, or Track A official adapter behavior is
-implemented yet.
+No full report generation or Track A official adapter behavior is implemented
+yet.
 
 ## Isolated Data Snapshot
 
@@ -83,7 +85,10 @@ matcher config hash. Cross-event-type rescue is forbidden.
 
 ### Scoring
 
-Scoring should compute role-value-level TP, FP, FN, precision, recall, and micro-F1 exactly as defined by the protocol. True negatives are never counted.
+Scoring computes role-value-level TP, FP, FN, precision, recall, and micro-F1
+exactly as defined by the protocol. It counts matched pairs over schema roles,
+unmatched predictions as FP, unmatched gold records as FN, and invalid-output FP
+atoms from prediction validation. True negatives are never counted.
 
 ### Track A Official Adapters
 
@@ -103,4 +108,5 @@ invalid value-type diagnostics.
 Phase 3 adds protocol-v1 validation tests for T06-T10, T28, and T30.
 
 Phase 4 adds protocol-v1 strict normalization tests for T19-T22. Phase 5 adds
-protocol-v1 matching tests for T16-T18 and T23.
+protocol-v1 matching tests for T16-T18 and T23. Phase 6 adds protocol-v1
+scoring tests for T01-T05, T11-T15, and T25.
