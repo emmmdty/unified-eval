@@ -4,7 +4,7 @@
 
 The frozen authority is `docs/DEE Evaluation Protocol Final.md`. Implementations must follow that protocol exactly.
 
-## Phase 8 Status
+## Phase 10 Status
 
 This repository implements the frozen canonical contract layer for protocol-v1
 prediction and gold JSONL, plus the frozen validation/accounting layer for
@@ -77,12 +77,15 @@ Implemented:
   DuEE-Fin offline official-style result loading;
 - separate DuEE-Fin `online_official` and `offline_official_style` result
   types.
+- a public `python -m unified_eval.protocol_v1` CLI with explicit dataset,
+  split, schema, gold, prediction, and output-dir arguments;
+- end-to-end CLI tests and smoke fixture support for copied local data
+  snapshots.
 
 Not implemented yet:
 
 - complete offline reproductions of every dataset-official script;
 - auxiliary normalized scoring beyond the disabled report placeholder;
-- copied dataset files;
 - dataset splitting or data preprocessing.
 
 ## Boundaries
@@ -105,6 +108,27 @@ uv run ruff check .
 uv run ruff format --check .
 make check
 ```
+
+## Protocol-v1 CLI
+
+After creating the local data snapshot, run the public evaluator with explicit
+paths:
+
+```bash
+uv run python -m unified_eval.protocol_v1 \
+  --dataset ChFinAnn \
+  --split dev \
+  --schema data/processed/views/evaluator_gold/ChFinAnn/schema.json \
+  --gold data/processed/views/evaluator_gold/ChFinAnn/dev.jsonl \
+  --pred examples/predictions/chfinann_dev_toy.jsonl \
+  --output-dir outputs/chfinann_dev_toy
+```
+
+The CLI does not infer the dataset or schema from paths, and it does not repair
+prediction records. Outputs are the required protocol artifacts:
+`overall_metrics.json`, `matching_log.csv`, `unmatched_cases.csv`,
+`error_cases.csv`, `invalid_cases.csv`, `normalization_log.csv`,
+`duplicate_log.csv`, and `config.json`.
 
 ## Data Snapshot
 
