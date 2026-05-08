@@ -4,20 +4,25 @@
 
 The frozen authority is `docs/DEE Evaluation Protocol Final.md`. Implementations must follow that protocol exactly.
 
-## Phase 0 Status
+## Phase 2 Status
 
-This repository is initialized as a scaffold only.
+This repository implements the frozen canonical contract layer for protocol-v1
+prediction and gold JSONL.
 
-Phase 0 includes:
+Implemented:
 
 - uv-managed Python project metadata;
 - an importable `unified_eval` package;
-- a smoke test;
-- repository docs and command wiring.
+- canonical prediction JSONL parsing for `document_id` / `predictions`;
+- canonical gold JSONL parsing for `document_id` / `gold_events`;
+- schema registry metadata for dataset, split, legal event types, legal roles,
+  schema hash, and split hash;
+- strict rejection of legacy `doc_id` / `events` as main evaluator input;
+- contract tests for invalid role value types without string coercion.
 
-Phase 0 does not include:
+Not implemented yet:
 
-- matching, scoring, validation, or normalization logic;
+- matching, scoring, or normalization logic;
 - Track A official adapter implementations;
 - copied dataset files;
 - dataset splitting or data preprocessing.

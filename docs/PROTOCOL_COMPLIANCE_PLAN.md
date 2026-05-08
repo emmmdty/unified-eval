@@ -2,7 +2,11 @@
 
 This document tracks the implementation plan for the required test suite in `docs/DEE Evaluation Protocol Final.md`.
 
-Phase 0 status: scaffold only. Every protocol test below is planned, not implemented, except the repository smoke import test in `tests/test_smoke.py`.
+Phase 2 status: canonical contract code is implemented in
+`src/unified_eval/contracts.py`, `src/unified_eval/schema.py`, and
+`src/unified_eval/io.py`, with focused tests in
+`tests/protocol_v1/test_contracts.py`. The T01-T30 scoring freeze suite below
+remains planned unless explicitly noted in a later phase.
 
 | Test ID | Protocol Test | Future Target Module | Phase 0 Status |
 | --- | --- | --- | --- |
@@ -47,6 +51,10 @@ Phase 0 status: scaffold only. Every protocol test below is planned, not impleme
 6. Add required logs and reproducibility metadata.
 7. Add Track A official adapter interfaces and regression fixtures.
 8. Run T01-T30 as the freeze gate before any test-set reporting.
+
+Phase 2 completes steps 1-2 only for the canonical contract surface. It does not
+implement matching, scoring, normalization, official adapters, invalid-case CSV
+logging, duplicate logs, or result manifests.
 
 ## Non-Goals
 

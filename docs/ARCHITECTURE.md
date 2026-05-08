@@ -9,14 +9,19 @@ This repository is dedicated to unified evaluation. It does not own dataset prep
 - Later phases may copy only necessary, small, approved artifacts into this repository.
 - Track A dataset-official metrics and Track B unified strict metrics must remain separate.
 
-## Phase 0 Layout
+## Current Layout
 
 - `src/unified_eval/`: importable Python package scaffold.
-- `tests/`: smoke tests and future protocol regression tests.
+- `src/unified_eval/contracts.py`: immutable canonical document, record, and
+  validation issue contracts.
+- `src/unified_eval/schema.py`: frozen schema registry metadata.
+- `src/unified_eval/io.py`: canonical prediction/gold JSONL readers.
+- `tests/`: smoke tests, snapshot tests, and protocol-v1 contract tests.
 - `scripts/`: future thin command-line wrappers.
 - `docs/`: frozen protocol, architecture notes, and compliance planning.
 
-No evaluator behavior is implemented in Phase 0.
+No matching, scoring, normalization, or Track A official adapter behavior is
+implemented yet.
 
 ## Isolated Data Snapshot
 
@@ -34,11 +39,15 @@ schemas.
 
 ### Canonical I/O
 
-Future code should parse canonical JSONL prediction and gold files, one document per line. It should preserve raw invalid input for logging and avoid coercive repair.
+Implemented code parses canonical JSONL prediction and gold files, one document
+per line. It preserves invalid raw values in validation issues and avoids
+coercive repair.
 
 ### Dataset Adapters
 
-Dataset adapters should expose dataset name, split version, schema path, schema hash, legal event types, and legal roles. They must not create new splits or guess schema fields.
+The schema registry exposes dataset, split, schema hash, split hash, legal event
+types, and legal roles. Future dataset adapters must not create new splits or
+guess schema fields.
 
 ### Validation
 
@@ -66,4 +75,7 @@ Report generation should write the required machine-readable outputs: `overall_m
 
 ### Tests
 
-The required T01-T30 suite in the frozen protocol is the acceptance target for evaluator freeze. Phase 0 includes only a smoke test.
+The required T01-T30 suite in the frozen protocol is the acceptance target for
+evaluator freeze. Phase 2 adds protocol-v1 contract tests for canonical
+prediction/gold parsing, legacy-shape rejection, schema registry metadata, and
+invalid value-type diagnostics.
