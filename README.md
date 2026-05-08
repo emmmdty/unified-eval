@@ -4,10 +4,11 @@
 
 The frozen authority is `docs/DEE Evaluation Protocol Final.md`. Implementations must follow that protocol exactly.
 
-## Phase 2 Status
+## Phase 3 Status
 
 This repository implements the frozen canonical contract layer for protocol-v1
-prediction and gold JSONL.
+prediction and gold JSONL, plus the frozen validation/accounting layer for
+malformed prediction input.
 
 Implemented:
 
@@ -18,7 +19,12 @@ Implemented:
 - schema registry metadata for dataset, split, legal event types, legal roles,
   schema hash, and split hash;
 - strict rejection of legacy `doc_id` / `events` as main evaluator input;
-- contract tests for invalid role value types without string coercion.
+- contract tests for invalid role value types without string coercion;
+- prediction validation output structures for `valid_records_for_matching`,
+  `invalid_cases`, illegal-event FP atoms, illegal-role FP atoms,
+  invalid-value FP atoms, and duplicate value logs;
+- validation coverage for frozen protocol T06-T10, T28, and T30 without invoking
+  matching or scoring.
 
 Not implemented yet:
 

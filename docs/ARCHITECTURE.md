@@ -16,6 +16,8 @@ This repository is dedicated to unified evaluation. It does not own dataset prep
   validation issue contracts.
 - `src/unified_eval/schema.py`: frozen schema registry metadata.
 - `src/unified_eval/io.py`: canonical prediction/gold JSONL readers.
+- `src/unified_eval/validation.py`: tolerant prediction validation and
+  invalid-output accounting for protocol Section 6.
 - `tests/`: smoke tests, snapshot tests, and protocol-v1 contract tests.
 - `scripts/`: future thin command-line wrappers.
 - `docs/`: frozen protocol, architecture notes, and compliance planning.
@@ -51,7 +53,12 @@ guess schema fields.
 
 ### Validation
 
-Validation should implement protocol Section 6. Invalid JSON, malformed records, illegal event types, illegal roles, invalid values, empty values, and duplicate values must be counted and logged.
+Validation implements the Phase 3 slice of protocol Section 6 for prediction
+JSONL. Invalid JSON, malformed documents, malformed records, illegal event
+types, illegal roles, invalid values, empty values, duplicate role values,
+unknown document IDs, and split mismatches are counted and logged. It emits
+valid records for future matching plus invalid-case and FP-atom side channels;
+it does not run matching, scoring, or normalization.
 
 ### Strict Normalization
 
@@ -79,3 +86,5 @@ The required T01-T30 suite in the frozen protocol is the acceptance target for
 evaluator freeze. Phase 2 adds protocol-v1 contract tests for canonical
 prediction/gold parsing, legacy-shape rejection, schema registry metadata, and
 invalid value-type diagnostics.
+
+Phase 3 adds protocol-v1 validation tests for T06-T10, T28, and T30.

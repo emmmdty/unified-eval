@@ -8,6 +8,12 @@ Phase 2 status: canonical contract code is implemented in
 `tests/protocol_v1/test_contracts.py`. The T01-T30 scoring freeze suite below
 remains planned unless explicitly noted in a later phase.
 
+Phase 3 status: prediction validation code is implemented in
+`src/unified_eval/validation.py`, with focused tests in
+`tests/protocol_v1/test_validation_engine.py`. This phase covers malformed
+prediction input and invalid-case accounting only; matching, scoring,
+normalization, and Track A official adapters remain unimplemented.
+
 | Test ID | Protocol Test | Future Target Module | Phase 0 Status |
 | --- | --- | --- | --- |
 | T01 | Gold vs Gold | Track B scorer plus Track A adapter fixtures | Planned |
@@ -15,11 +21,11 @@ remains planned unless explicitly noted in a later phase.
 | T03 | Empty Gold | Scoring and unmatched prediction handling | Planned |
 | T04 | Empty Both | Scoring zero-count handling | Planned |
 | T05 | Wrong Event Type | Grouping and cross-type error handling | Planned |
-| T06 | Illegal Event Type | Validation and invalid event logging | Planned |
-| T07 | Illegal Role | Validation and illegal role FP accounting | Planned |
-| T08 | Invalid JSON Line | Canonical I/O and invalid JSON logging | Planned |
-| T09 | Invalid Record | Canonical I/O and record-level validation | Planned |
-| T10 | Invalid Value Type | Value validation and invalid case logging | Planned |
+| T06 | Illegal Event Type | Validation and invalid event logging | Implemented in Phase 3 |
+| T07 | Illegal Role | Validation and illegal role FP accounting | Implemented in Phase 3 |
+| T08 | Invalid JSON Line | Canonical I/O and invalid JSON logging | Implemented in Phase 3 |
+| T09 | Invalid Record | Canonical I/O and record-level validation | Implemented in Phase 3 |
+| T10 | Invalid Value Type | Value validation and invalid case logging | Implemented in Phase 3 |
 | T11 | Duplicate Prediction | Duplicate record handling and unmatched FP accounting | Planned |
 | T12 | Partial Record | Matched-pair TP/FN accounting | Planned |
 | T13 | Wrong Role Value | Matched-pair FP/FN accounting | Planned |
@@ -37,9 +43,9 @@ remains planned unless explicitly noted in a later phase.
 | T25 | Unified Regression | End-to-end Track B fixtures | Planned |
 | T26 | Config Hash Stability | Config and hash utilities | Planned |
 | T27 | Test-Time Mutation Guard | Result manifest and hash validation | Planned |
-| T28 | Silent Drop Guard | Validation, logging, and FP accounting | Planned |
-| T29 | Duplicate Value Log | Value canonicalization and duplicate logs | Planned |
-| T30 | Dataset Split Check | Dataset adapter and split validation | Planned |
+| T28 | Silent Drop Guard | Validation, logging, and FP accounting | Implemented in Phase 3 |
+| T29 | Duplicate Value Log | Value canonicalization and duplicate logs | Validation log implemented in Phase 3; scoring integration planned |
+| T30 | Dataset Split Check | Dataset adapter and split validation | Implemented in Phase 3 |
 
 ## Implementation Order
 
@@ -52,9 +58,10 @@ remains planned unless explicitly noted in a later phase.
 7. Add Track A official adapter interfaces and regression fixtures.
 8. Run T01-T30 as the freeze gate before any test-set reporting.
 
-Phase 2 completes steps 1-2 only for the canonical contract surface. It does not
-implement matching, scoring, normalization, official adapters, invalid-case CSV
-logging, duplicate logs, or result manifests.
+Phase 2 completes steps 1-2 only for the canonical contract surface. Phase 3
+adds invalid-case CSV serialization and duplicate role-value logs for prediction
+validation. Matching, scoring, normalization, official adapters, full duplicate
+record handling, and result manifests remain unimplemented.
 
 ## Non-Goals
 
