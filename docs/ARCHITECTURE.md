@@ -27,13 +27,16 @@ This repository is dedicated to unified evaluation. It does not own dataset prep
 - `src/unified_eval/reporting.py`: required protocol-v1 report artifact writer
   for overall metrics, logs, config metadata, dependency versions, commit hash,
   and config mutation guard outputs.
+- `src/unified_eval/official_adapters/`: Track A official adapter interfaces
+  and the stable official metric result schema. These modules do not import the
+  Track B matcher or scorer.
 - `configs/strict_normalizer_v1.json`: frozen strict normalizer v1 config.
 - `tests/`: smoke tests, snapshot tests, and protocol-v1 contract tests.
 - `scripts/`: future thin command-line wrappers.
 - `docs/`: frozen protocol, architecture notes, and compliance planning.
 
-No Track A official adapter behavior or auxiliary normalized scoring is
-implemented yet.
+Complete offline reproductions of every dataset-official evaluator and
+auxiliary normalized scoring are not implemented yet.
 
 ## Isolated Data Snapshot
 
@@ -95,7 +98,20 @@ atoms from prediction validation. True negatives are never counted.
 
 ### Track A Official Adapters
 
-Official adapters should preserve dataset-official behavior for comparability. They must not replace Track B and must record evaluator version, command, and commit hash where applicable.
+Official adapters preserve dataset-official metric reporting boundaries for
+historical comparability. They must not replace Track B and must record
+evaluator version, command, and commit hash where applicable.
+
+Phase 8 implements adapter interfaces, not complete reimplementations of all
+official scripts. Adapter outputs use `official-metric-result-v1` and can be
+`available=false` when an official runner or official score is unavailable.
+DuEE-Fin `online_official` and `offline_official_style` results are separate
+score types. The offline official-style path must never be presented as an
+online hidden-test leaderboard result.
+
+Track A and Track B are not interchangeable. Track A official adapters must not
+call or wrap the Track B Hungarian matcher or unified strict scorer, and Track B
+must not inherit official greedy logic.
 
 ### Reports And Logs
 

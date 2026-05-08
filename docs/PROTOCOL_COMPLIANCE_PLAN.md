@@ -50,6 +50,17 @@ required protocol-v1 output files, stable CSV headers, `overall_metrics.json`,
 test-time mutation guard. Track A official adapters and auxiliary normalized
 scoring remain unimplemented.
 
+Phase 8 status: Track A official adapter interfaces are implemented in
+`src/unified_eval/official_adapters/`, with focused tests in
+`tests/protocol_v1/test_t24_official_adapters.py` and fixed samples under
+`tests/fixtures/protocol_v1/`. This phase covers the stable
+`official-metric-result-v1` schema, `available=false` unavailable results,
+ChFinAnn Doc2EDAG and DocFEE fixed-sample loading, DuEE-Fin online-official vs
+offline-official-style separation, and the boundary that Track A adapters do
+not import Track B matching or scoring. Complete offline reproductions of every
+dataset-official evaluator and auxiliary normalized scoring remain
+unimplemented.
+
 | Test ID | Protocol Test | Future Target Module | Current Status |
 | --- | --- | --- | --- |
 | T01 | Gold vs Gold | Track B scorer plus Track A adapter fixtures | Unified scorer implemented in Phase 6; Track A adapter planned |
@@ -68,14 +79,14 @@ scoring remain unimplemented.
 | T14 | Multi-Value Order | Value-set representation | Implemented in Phase 6 |
 | T15 | Multi-Value Partial Overlap | Strict multi-value scoring | Implemented in Phase 6 |
 | T16 | Multiple Same-Type Records | Hungarian matching | Implemented in Phase 5 |
-| T17 | Greedy vs Hungarian Difference | Official adapter comparison and unified matcher | Implemented in Phase 5 for unified matcher; official adapter comparison planned |
+| T17 | Greedy vs Hungarian Difference | Official adapter comparison and unified matcher | Implemented in Phase 5 for unified matcher; Phase 8 keeps official adapter interfaces separate from Track B matching/scoring |
 | T18 | Zero-Score Pair | Matching and unmatched conversion | Implemented in Phase 5 |
 | T19 | Strict Normalization | Strict normalizer | Implemented in Phase 4 |
 | T20 | Auxiliary Normalization Isolation | Auxiliary normalizer isolation | Implemented in Phase 4 for unified strict isolation; auxiliary scoring planned |
 | T21 | No Auto Split | Strict normalizer and prediction repair guard | Implemented in Phase 4 |
 | T22 | No External Alias | Strict normalizer and alias repair guard | Implemented in Phase 4 |
 | T23 | Tie-Breaking Determinism | Matcher tie-breaking and logs | Implemented in Phase 5 |
-| T24 | Official Adapter Regression | Track A official adapters | Planned |
+| T24 | Official Adapter Regression | Track A official adapters | Adapter-interface regression implemented in Phase 8 for ChFinAnn, DocFEE, and DuEE-Fin offline official-style fixed samples |
 | T25 | Unified Regression | End-to-end Track B fixtures | Scoring golden fixture implemented in Phase 6; full report fixture planned |
 | T26 | Config Hash Stability | Config and hash utilities | Implemented in Phase 7 |
 | T27 | Test-Time Mutation Guard | Result manifest and hash validation | Implemented in Phase 7 |
@@ -99,8 +110,9 @@ adds invalid-case CSV serialization and duplicate role-value logs for prediction
 validation. Phase 4 completes step 3 for strict unified normalization only.
 Phase 5 completes step 4 for frozen matching only. Phase 6 completes step 5 for
 final unified strict scoring only. Phase 7 completes step 6 for required
-machine-readable logs and reproducibility metadata. Auxiliary normalized
-scoring, official adapters, and full official-adapter result manifests remain
+machine-readable logs and reproducibility metadata. Phase 8 completes step 7
+for official adapter interfaces and fixed adapter-result samples only. Complete
+official script reproductions and auxiliary normalized scoring remain
 unimplemented.
 
 ## Non-Goals
@@ -113,3 +125,7 @@ unimplemented.
 - No gold repair.
 - No prediction repair.
 - No dataset re-splitting.
+- No substitution of Track B unified strict scores for unavailable Track A
+  official scores.
+- No mixing of DuEE-Fin offline official-style results with online official
+  leaderboard results.

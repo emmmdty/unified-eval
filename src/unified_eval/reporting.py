@@ -27,6 +27,11 @@ from unified_eval.normalization import (
     normalization_config_hash,
     normalization_logs_to_csv_rows,
 )
+from unified_eval.official_adapters import (
+    OFFICIAL_RESULT_FIELDS,
+    OfficialMetricResult,
+    unavailable_result,
+)
 from unified_eval.schema import SchemaRegistry
 from unified_eval.scoring import ScoringResult
 from unified_eval.validation import (
@@ -98,7 +103,7 @@ class ReportArtifactInput:
     matcher_config: Mapping[str, Any] = field(
         default_factory=lambda: MATCHING_CONFIG_V1.copy()
     )
-    official: Mapping[str, Any] | None = None
+    official: Mapping[str, Any] | OfficialMetricResult | None = None
     aux_normalized: Mapping[str, Any] | None = None
     diagnostics: Mapping[str, float] | None = None
     normalization_logs: Sequence[NormalizationLogEntry] = ()
@@ -177,7 +182,7 @@ def build_overall_metrics(report_input: ReportArtifactInput) -> dict[str, Any]:
             report_input.normalizer_config
         ),
         "matching_config_hash": matching_config_hash(report_input.matcher_config),
-        "official": _official_block(report_input.official),
+        "official": _official_block(report_input.official, report_input.schema.dataset),
         "unified_strict": {
             "tp": scoring.true_positives,
             "fp": scoring.false_positives,
@@ -427,18 +432,35 @@ def _error_row(
     }
 
 
-def _official_block(official: Mapping[str, Any] | None) -> dict[str, Any]:
-    block = {
-        "available": False,
-        "metric_name": "",
-        "evaluator": "",
-        "precision": 0.0,
-        "recall": 0.0,
-        "f1": 0.0,
-    }
+def _official_block(
+    official: Mapping[str, Any] | OfficialMetricResult | None,
+    dataset: str,
+) -> dict[str, Any]:
+    if isinstance(official, OfficialMetricResult):
+        return official.to_overall_metrics_block()
+
+    block = _default_unavailable_official_result(dataset).to_overall_metrics_block()
     if official is not None:
-        block.update(dict(official))
-    return block
+        block.update(_json_roundtrip(dict(official)))
+    return {field: block[field] for field in OFFICIAL_RESULT_FIELDS}
+
+
+def _default_unavailable_official_result(dataset: str) -> OfficialMetricResult:
+    default_names = {
+        "DuEE-Fin": (
+            "DuEE-Fin Official / Offline Official-Style F1",
+            "duee-fin-official",
+        ),
+        "ChFinAnn": ("ChFinAnn Official F1", "chfinann-doc2edag-official"),
+        "DocFEE": ("DocFEE Official F1", "docfee-official"),
+    }
+    metric_name, evaluator = default_names.get(dataset, ("Official F1", "official"))
+    return unavailable_result(
+        dataset=dataset,
+        metric_name=metric_name,
+        evaluator=evaluator,
+        reason="official adapter result was not provided",
+    )
 
 
 def _aux_normalized_block(aux_normalized: Mapping[str, Any] | None) -> dict[str, Any]:
