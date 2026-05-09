@@ -1,0 +1,53 @@
+{
+  "aux_normalized": {
+    "enabled": false,
+    "f1": 0.0,
+    "precision": 0.0,
+    "recall": 0.0
+  },
+  "dataset": "ChFinAnn",
+  "diagnostics": {
+    "duplicate_record_rate": 0.0,
+    "empty_prediction_rate": 0.5,
+    "event_type_f1": 0.0,
+    "format_validity": 1.0,
+    "invalid_event_type_rate": 0.0,
+    "invalid_role_rate": 0.0,
+    "json_validity": 1.0,
+    "record_em": 0.0,
+    "schema_validity": 1.0
+  },
+  "evaluator_version": "protocol-v1",
+  "matching_config_hash": "sha256:83bf8563da60a0a98511b431b96eb5bcb3140be55e387d98254976193eb27abb",
+  "normalization_config_hash": "sha256:698f7ef6fc58c459f132c93e8ae337798558e1228a4e8f8d5f90f44d9c44e487",
+  "official": {
+    "available": false,
+    "command": "",
+    "dataset": "ChFinAnn",
+    "evaluator": "chfinann-doc2edag-official",
+    "evaluator_commit_hash": "",
+    "evaluator_version": "",
+    "f1": 0.0,
+    "metadata": {},
+    "metric_name": "ChFinAnn Official F1",
+    "notes": [],
+    "precision": 0.0,
+    "recall": 0.0,
+    "schema_version": "official-metric-result-v1",
+    "score_type": "unavailable",
+    "source": "",
+    "unavailable_reason": "official adapter result was not provided"
+  },
+  "schema_hash": "sha256:5ee9c2e6c273bcc5eac765b2572bd230084ec1e0d0c551fe9ca2085c2eff0c9b",
+  "schema_version": "v1.0",
+  "split": "dev",
+  "split_version": "explicit:dev",
+  "unified_strict": {
+    "f1": 0.4,
+    "fn": 2,
+    "fp": 1,
+    "precision": 0.5,
+    "recall": 0.3333333333333333,
+    "tp": 1
+  }
+}

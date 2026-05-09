@@ -2,11 +2,21 @@ name: CI
 
 on:
   push:
+    branches:
+      - main
+      - "release/**"
+    tags:
+      - "v*"
   pull_request:
+
+permissions:
+  contents: read
 
 jobs:
   checks:
+    name: Release gates
     runs-on: ubuntu-latest
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
@@ -14,19 +24,41 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version: "3.13"
+          python-version: "3.13.12"
 
       - name: Set up uv
-        uses: astral-sh/setup-uv@v8
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          enable-cache: true
+
+      - name: Check lockfile
+        run: uv lock --check
 
       - name: Install dependencies
-        run: uv sync
+        run: uv sync --locked
+
+      - name: Regenerate v1.0.0 golden artifacts
+        run: |
+          uv run --locked python scripts/generate_release_golden.py \
+            --output-dir release_artifacts/v1.0.0/golden
+
+      - name: Verify committed v1.0.0 golden artifacts
+        run: git diff --exit-code -- release_artifacts/v1.0.0/golden
+
+      - name: Test release artifacts
+        run: uv run --locked pytest tests/test_release_artifacts.py
+
+      - name: Test Track A boundary adapters
+        run: uv run --locked pytest tests/protocol_v1 -k t24
 
       - name: Check formatting
-        run: uv run ruff format --check .
+        run: uv run --locked ruff format --check .
 
       - name: Lint
-        run: uv run ruff check .
+        run: uv run --locked ruff check .
 
-      - name: Test
-        run: uv run pytest
+      - name: Run full test suite
+        run: uv run --locked pytest
+
+      - name: Run protocol-v1 test suite
+        run: uv run --locked pytest tests/protocol_v1
