@@ -86,7 +86,7 @@ unimplemented.
 | T21 | No Auto Split | Strict normalizer and prediction repair guard | Implemented in Phase 4 |
 | T22 | No External Alias | Strict normalizer and alias repair guard | Implemented in Phase 4 |
 | T23 | Tie-Breaking Determinism | Matcher tie-breaking and logs | Implemented in Phase 5 |
-| T24 | Official Adapter Regression | Track A official adapters | Adapter-interface regression implemented in Phase 8 for ChFinAnn, DocFEE, and DuEE-Fin offline official-style fixed samples |
+| T24 | Official-Result Schema / Fixture Ingestion Regression | Track A official result schema and fixture ingestion | Schema / fixture-ingestion regression implemented in Phase 8 for ChFinAnn, DocFEE, and DuEE-Fin offline official-style fixed samples; not official evaluator runner reproduction |
 | T25 | Unified Regression | End-to-end Track B fixtures | Scoring golden fixture implemented in Phase 6; full report fixture planned |
 | T26 | Config Hash Stability | Config and hash utilities | Implemented in Phase 7 |
 | T27 | Test-Time Mutation Guard | Result manifest and hash validation | Implemented in Phase 7 |

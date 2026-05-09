@@ -4,7 +4,7 @@
 
 The frozen authority is `docs/DEE Evaluation Protocol Final.md`. Implementations must follow that protocol exactly.
 
-## Phase 10 Status
+## v0.9.0-rc1 Status
 
 This repository implements the frozen canonical contract layer for protocol-v1
 prediction and gold JSONL, plus the frozen validation/accounting layer for
@@ -14,7 +14,9 @@ rules. Phase 5 adds frozen event-type-constrained Hungarian matching for
 already normalized role-value records. Phase 6 adds final unified strict
 role-value micro scoring over matched and unmatched records. Phase 7 adds the
 frozen machine-readable report artifact layer. Phase 8 adds Track A official
-adapter interfaces and a stable official metric result schema.
+result schema, fixed-result ingestion helpers, and explicit unavailable blocks.
+This release candidate does not implement full dataset-official evaluator
+runner reproduction.
 
 Implemented:
 
@@ -67,14 +69,14 @@ Implemented:
   hashes, Python/SciPy/dependency versions, commit hash, and mutation guard
   status;
 - protocol-v1 report artifact tests for T26 and T27.
-- `src/unified_eval/official_adapters/` with isolated Track A interfaces for
-  DuEE-Fin, ChFinAnn Doc2EDAG, and DocFEE;
+- `src/unified_eval/official_adapters/` with isolated Track A result-schema
+  ingestion interfaces for DuEE-Fin, ChFinAnn Doc2EDAG, and DocFEE;
 - a stable `official-metric-result-v1` schema for available and unavailable
   official adapter outputs in `overall_metrics.json`;
 - explicit `available=false` official adapter results when an official runner
   or official score is not configured;
-- fixed T24 official-adapter regression samples for ChFinAnn, DocFEE, and
-  DuEE-Fin offline official-style result loading;
+- fixed T24 official-result schema / fixture-ingestion samples for ChFinAnn,
+  DocFEE, and DuEE-Fin offline official-style result loading;
 - separate DuEE-Fin `online_official` and `offline_official_style` result
   types.
 - a public `python -m unified_eval.protocol_v1` CLI with explicit dataset,
@@ -84,7 +86,8 @@ Implemented:
 
 Not implemented yet:
 
-- complete offline reproductions of every dataset-official script;
+- full ChFinAnn Doc2EDAG, DocFEE, or DuEE-Fin official evaluator runner
+  reproduction;
 - auxiliary normalized scoring beyond the disabled report placeholder;
 - dataset splitting or data preprocessing.
 
@@ -94,10 +97,11 @@ Not implemented yet:
 - Do not copy large files into this repository.
 - Do not implement LLM judge scoring, semantic matching, embedding similarity, alias repair, schema guessing, role guessing, event type guessing, gold repair, or prediction repair.
 - Keep Track A official metrics and Track B unified strict metrics separate.
-  They are not interchangeable: official adapter results preserve historical
-  comparability, while unified strict scoring is the cross-dataset scientific
-  metric. Never use unified strict scores as a substitute for unavailable
-  official metrics.
+  They are not interchangeable: Track A adapters currently preserve official
+  result schema / result ingestion / unavailable-block reporting only, while
+  unified strict scoring is the cross-dataset scientific metric. Never use
+  unified strict scores as a substitute for unavailable official metrics or as
+  evidence that an official runner was reproduced.
 
 ## Development
 

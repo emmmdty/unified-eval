@@ -232,6 +232,10 @@ def test_report_artifacts_write_required_files_and_stable_headers(
     assert config["scipy_version"] == scoring_result.matching_result.scipy_version
     assert config["dependency_versions"]["python"] == config["python_version"]
     assert config["dependency_versions"]["scipy"] == config["scipy_version"]
+    assert config["dependency_versions"]["unified-eval"] in {
+        "0.9.0-rc1",
+        "0.9.0rc1",
+    }
     assert config["commit_hash"] == "abc123"
     assert config["mutation_guard"]["leaderboard_valid"] is True
 

@@ -1,0 +1,90 @@
+{
+  "commit_hash": "unknown",
+  "dataset": "ChFinAnn",
+  "dependency_versions": {
+    "python": "3.13.12",
+    "scipy": "1.17.1",
+    "unified-eval": "0.9.0rc1"
+  },
+  "evaluator_version": "protocol-v1",
+  "matcher_config": {
+    "algorithm": "scipy.optimize.linear_sum_assignment",
+    "duplicate_records": "preserved",
+    "group_by": [
+      "dataset",
+      "split",
+      "document_id",
+      "event_type"
+    ],
+    "pair_score": "count_schema_roles_with_equal_non_empty_value_sets",
+    "record_representation": "role_to_frozenset_string",
+    "tie_breaking": [
+      "maximize_total_pair_score",
+      "maximize_exactly_matched_role_value_atoms",
+      "minimize_fp_plus_fn",
+      "minimize_lexicographic_pred_gold_pair_list"
+    ],
+    "track": "unified_strict",
+    "version": "hungarian_matcher_v1",
+    "zero_score_real_assignment": "unmatched_pred_plus_unmatched_gold"
+  },
+  "matching_config_hash": "sha256:83bf8563da60a0a98511b431b96eb5bcb3140be55e387d98254976193eb27abb",
+  "mutation_guard": {
+    "actual_hashes": {
+      "matching_config_hash": "sha256:83bf8563da60a0a98511b431b96eb5bcb3140be55e387d98254976193eb27abb",
+      "normalization_config_hash": "sha256:698f7ef6fc58c459f132c93e8ae337798558e1228a4e8f8d5f90f44d9c44e487",
+      "schema_hash": "sha256:5ee9c2e6c273bcc5eac765b2572bd230084ec1e0d0c551fe9ca2085c2eff0c9b",
+      "split_hash": "sha256:9582165e37f78826677a7f341d52e044c36b89062a5902cb5ab30bb8414d8df4"
+    },
+    "expected_hashes": {
+      "matching_config_hash": "sha256:83bf8563da60a0a98511b431b96eb5bcb3140be55e387d98254976193eb27abb"
+    },
+    "leaderboard_valid": true,
+    "mismatched_hashes": []
+  },
+  "normalization_config_hash": "sha256:698f7ef6fc58c459f132c93e8ae337798558e1228a4e8f8d5f90f44d9c44e487",
+  "normalizer_config": {
+    "normalizer_name": "strict_normalizer_v1",
+    "punctuation_map": {
+      "‘": "'",
+      "’": "'",
+      "“": "\"",
+      "”": "\"",
+      "「": "\"",
+      "」": "\"",
+      "『": "\"",
+      "』": "\"",
+      "（": "(",
+      "）": ")",
+      "，": ",",
+      "：": ":",
+      "；": ";"
+    },
+    "rule_order": [
+      "remove_invisible_controls",
+      "fullwidth_ascii_to_halfwidth",
+      "unicode_nfkc",
+      "strip_whitespace",
+      "collapse_whitespace",
+      "punctuation_to_ascii",
+      "remove_thousands_separators"
+    ],
+    "schema_version": "strict-normalizer-config-v1",
+    "thousands_separator": ",",
+    "track": "unified_strict",
+    "zero_width_chars": [
+      "​",
+      "‌",
+      "‍",
+      "⁠",
+      "﻿"
+    ]
+  },
+  "python_version": "3.13.12",
+  "schema_hash": "sha256:5ee9c2e6c273bcc5eac765b2572bd230084ec1e0d0c551fe9ca2085c2eff0c9b",
+  "schema_version": "v1.0",
+  "scipy_version": "1.17.1",
+  "split": "dev",
+  "split_hash": "sha256:9582165e37f78826677a7f341d52e044c36b89062a5902cb5ab30bb8414d8df4",
+  "split_version": "explicit:dev"
+}

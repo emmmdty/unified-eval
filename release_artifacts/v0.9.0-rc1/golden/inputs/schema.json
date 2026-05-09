@@ -1,0 +1,19 @@
+{
+  "canonical_version": "v1.0",
+  "dataset": "ChFinAnn",
+  "event_types": [
+    {
+      "event_type": "EquityPledge",
+      "roles": [
+        "Pledger",
+        "Pledgee"
+      ]
+    },
+    {
+      "event_type": "EquityRepurchase",
+      "roles": [
+        "CompanyName"
+      ]
+    }
+  ]
+}

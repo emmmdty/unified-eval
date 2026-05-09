@@ -24,10 +24,25 @@ format, lint, and test gates.
   `/home/tjk/myProjects/masterProjects/DEE/unified-eval/.venv/bin/python3`
 - SciPy version: `1.17.1`
 - Dependency versions:
-  - `unified-eval==0.0.0`
+  - `unified-eval==0.0.0` for the Phase 11 run before release hardening
   - `scipy==1.17.1`
   - `pytest==9.0.3`
   - `ruff==0.15.12`
+- Phase 12 release hardening updates package metadata to `0.9.0-rc1`
+  (`0.9.0rc1` in installed package metadata) and records that version in the
+  v0.9.0-rc1 release manifest and golden `config.json`.
+
+## Track A Official Adapter Scope
+
+Track A support in this repository is limited to the stable
+`official-metric-result-v1` schema, fixed official-result fixture ingestion,
+and explicit `available=false` unavailable blocks. It is not a complete
+offline reproduction of the ChFinAnn Doc2EDAG, DocFEE, or DuEE-Fin official
+evaluator runners.
+
+Track A official metrics and Track B Unified Strict Role-Value Micro-F1 remain
+separate. Unified strict scores are the cross-dataset scientific metric, but
+they must not be reported as substitutes for unavailable official metrics.
 
 ## Frozen Hashes
 

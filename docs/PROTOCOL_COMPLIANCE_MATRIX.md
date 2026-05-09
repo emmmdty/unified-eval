@@ -48,7 +48,7 @@ Golden expected outputs:
 | T21 | No Auto Split | PASS | `tests/protocol_v1/test_t21_no_auto_split.py` | Expected no split, FP=1, FN=2 in `t01_t30_expected_outputs.json` |
 | T22 | No External Alias | PASS | `tests/protocol_v1/test_t22_no_external_alias.py` | Expected alias mismatch FP=1, FN=1 in `t01_t30_expected_outputs.json` |
 | T23 | Tie-Breaking Determinism | PASS | `tests/protocol_v1/test_t23_tie_breaking_determinism.py` | Expected repeated matching log in `t01_t30_expected_outputs.json` |
-| T24 | Official Adapter Regression | PASS | `tests/protocol_v1/test_t24_official_adapter_regression.py` | Expected ChFinAnn, DocFEE, and DuEE-Fin adapter outputs in fixture JSON files |
+| T24 | Official-Result Schema / Fixture Ingestion Regression | PASS | `tests/protocol_v1/test_t24_official_result_schema_fixture_ingestion.py` | Expected ChFinAnn, DocFEE, and DuEE-Fin official-result schema blocks from fixture JSON files; this is not official runner reproduction |
 | T25 | Unified Regression | PASS | `tests/protocol_v1/test_t25_unified_regression.py` | Expected unified TP/FP/FN/F1 in `t01_t30_expected_outputs.json` and `t25_unified_regression_golden.json` |
 | T26 | Config Hash Stability | PASS | `tests/protocol_v1/test_t26_config_hash_stability.py` | Expected schema, split, normalizer, and matcher hashes in `t01_t30_expected_outputs.json` |
 | T27 | Test-Time Mutation Guard | PASS | `tests/protocol_v1/test_t27_test_time_mutation_guard.py` | Expected changed hash and leaderboard invalidation in `t01_t30_expected_outputs.json` |
@@ -59,3 +59,9 @@ Golden expected outputs:
 No row in this matrix treats gold-vs-gold, empty-vs-gold, or smoke execution as
 complete protocol proof. Each T01-T30 row is backed by a named regression test
 and explicit golden counts or log expectations.
+
+Track A coverage in this release candidate is limited to official result
+schema, fixed-result ingestion, and explicit unavailable blocks. It does not
+claim complete ChFinAnn Doc2EDAG, DocFEE, or DuEE-Fin official evaluator runner
+reproduction, and Track B Unified Strict scores must not be substituted for
+unavailable official metrics.

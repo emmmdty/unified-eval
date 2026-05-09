@@ -1,6 +1,6 @@
 [project]
 name = "unified-eval"
-version = "0.0.0"
+version = "0.9.0-rc1"
 description = "Protocol-first scaffold for unified document-level event extraction evaluation."
 readme = "README.md"
 requires-python = ">=3.10"
