@@ -9,7 +9,7 @@ around package code or explicit snapshot/release operations.
 - `verify_data_snapshot.py`: verifies the copied snapshot manifest and file
   hashes.
 - `run_all_checks.sh`: runs the local format, lint, and pytest gate.
-- `generate_release_golden.py`: regenerates the public v0.9.0-rc1 toy CLI
+- `generate_release_golden.py`: regenerates the public v1.0.0 toy CLI
   golden artifact set and hash manifest.
 
 These scripts must follow `docs/DEE Evaluation Protocol Final.md`. They must

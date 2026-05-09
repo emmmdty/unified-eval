@@ -1,0 +1,4 @@
+case_type,document_id,event_type,pred_idx,gold_idx,role,value_json,reason
+FN,doc_001,EquityPledge,0,0,Pledgee,"""李四""",mismatched_role_value
+FN,doc_002,EquityRepurchase,,0,CompanyName,"""示例股份有限公司""",unmatched_gold
+FP,doc_001,EquityPledge,0,0,Pledgee,"""WRONG""",mismatched_role_value

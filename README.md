@@ -4,18 +4,19 @@
 
 The frozen authority is `docs/DEE Evaluation Protocol Final.md`. Implementations must follow that protocol exactly.
 
-## v0.9.0-rc1 Status
+## v1.0.0 Status
 
-This repository implements the frozen canonical contract layer for protocol-v1
-prediction and gold JSONL, plus the frozen validation/accounting layer for
-malformed prediction input. It also implements strict normalization for the
-unified strict metric exactly within the frozen protocol's allowed character
-rules. Phase 5 adds frozen event-type-constrained Hungarian matching for
-already normalized role-value records. Phase 6 adds final unified strict
-role-value micro scoring over matched and unmatched records. Phase 7 adds the
-frozen machine-readable report artifact layer. Phase 8 adds Track A official
-result schema, fixed-result ingestion helpers, and explicit unavailable blocks.
-This release candidate does not implement full dataset-official evaluator
+This repository implements the frozen protocol-v1 Track B Unified Strict
+Role-Value Micro-F1 evaluator. The implementation includes the canonical
+prediction and gold JSONL contract layer, strict validation/accounting for
+malformed prediction input, strict normalization within the frozen protocol's
+allowed character rules, event-type-constrained Hungarian matching, unified
+strict role-value micro scoring, and the machine-readable report artifact
+layer.
+
+Track A support is limited to official result schema, fixed-result ingestion
+helpers, and explicit unavailable blocks. This v1.0.0 release does not
+implement full ChFinAnn Doc2EDAG, DocFEE, or DuEE-Fin official evaluator
 runner reproduction.
 
 Implemented:
@@ -84,7 +85,7 @@ Implemented:
 - end-to-end CLI tests and smoke fixture support for copied local data
   snapshots.
 
-Not implemented yet:
+Out of scope:
 
 - full ChFinAnn Doc2EDAG, DocFEE, or DuEE-Fin official evaluator runner
   reproduction;

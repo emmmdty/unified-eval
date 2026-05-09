@@ -1,0 +1,2 @@
+{"document_id": "doc_001", "predictions": [{"arguments": {"Pledgee": "WRONG", "Pledger": "张三"}, "event_type": "EquityPledge"}]}
+{"document_id": "doc_002", "predictions": []}

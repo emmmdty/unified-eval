@@ -11,7 +11,7 @@ uv run pytest tests/protocol_v1
 
 Latest local verification:
 
-- `uv run pytest tests/protocol_v1`: `87 passed`
+- `uv run pytest tests/protocol_v1`: `91 passed`
 - individual execution of all required `test_t01_*.py` to `test_t30_*.py`
   files: `30 passed`
 
@@ -60,8 +60,8 @@ No row in this matrix treats gold-vs-gold, empty-vs-gold, or smoke execution as
 complete protocol proof. Each T01-T30 row is backed by a named regression test
 and explicit golden counts or log expectations.
 
-Track A coverage in this release candidate is limited to official result
-schema, fixed-result ingestion, and explicit unavailable blocks. It does not
-claim complete ChFinAnn Doc2EDAG, DocFEE, or DuEE-Fin official evaluator runner
-reproduction, and Track B Unified Strict scores must not be substituted for
-unavailable official metrics.
+Track A coverage in v1.0.0 is limited to official result schema, fixed-result
+ingestion, and explicit unavailable blocks. It does not claim complete ChFinAnn
+Doc2EDAG, DocFEE, or DuEE-Fin official evaluator runner reproduction, and Track
+B Unified Strict Role-Value Micro-F1 must not be substituted for unavailable
+official metrics.

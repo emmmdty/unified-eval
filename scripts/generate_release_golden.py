@@ -12,14 +12,14 @@ from unified_eval import __version__
 from unified_eval.data_snapshot import sha256_file
 from unified_eval.reporting import ARTIFACT_FILENAMES
 
-DEFAULT_OUTPUT_DIR = Path("release_artifacts/v0.9.0-rc1/golden")
+DEFAULT_OUTPUT_DIR = Path("release_artifacts/v1.0.0/golden")
 REPO_ROOT = Path(__file__).resolve().parents[1]
 NORMALIZER_CONFIG = REPO_ROOT / "configs" / "strict_normalizer_v1.json"
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        description="Generate the v0.9.0-rc1 public toy CLI golden artifacts."
+        description="Generate the v1.0.0 public toy CLI golden artifacts."
     )
     parser.add_argument(
         "--output-dir",
@@ -176,7 +176,7 @@ def _write_hash_manifest(output_dir: Path) -> None:
     _write_json(
         output_dir / "artifact_hashes.json",
         {
-            "release": "v0.9.0-rc1",
+            "release": "v1.0.0",
             "hash_method": "sha256",
             "generated_by": "scripts/generate_release_golden.py",
             "package_version": __version__,

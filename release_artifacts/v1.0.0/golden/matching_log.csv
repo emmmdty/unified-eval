@@ -1,0 +1,3 @@
+document_id,event_type,pred_idx,gold_idx,pair_score,matched,matched_roles
+doc_001,EquityPledge,0,0,1,true,"[""Pledger""]"
+doc_002,EquityRepurchase,,0,0,false,[]

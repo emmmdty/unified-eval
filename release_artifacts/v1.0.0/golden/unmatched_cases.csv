@@ -1,0 +1,2 @@
+case_type,document_id,event_type,pred_idx,gold_idx,record_json,reason
+gold,doc_002,EquityRepurchase,,0,"{""dataset"":""ChFinAnn"",""document_id"":""doc_002"",""event_id"":""gold-2"",""event_type"":""EquityRepurchase"",""record_index"":0,""roles_to_values"":{""CompanyName"":[""示例股份有限公司""]},""split"":""dev""}",unmatched_gold

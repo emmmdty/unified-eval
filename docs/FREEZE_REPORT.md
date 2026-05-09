@@ -31,6 +31,11 @@ format, lint, and test gates.
 - Phase 12 release hardening updates package metadata to `0.9.0-rc1`
   (`0.9.0rc1` in installed package metadata) and records that version in the
   v0.9.0-rc1 release manifest and golden `config.json`.
+- Phase 13 v1.0.0 release hardening promotes the v0.9.0-rc1 release candidate
+  to the frozen protocol-v1 evaluator release. It updates package/release
+  metadata, documentation, v1 golden artifacts, and the v1 release manifest
+  without changing evaluator matching, scoring, validation, normalization, or
+  schema behavior.
 
 ## Track A Official Adapter Scope
 

@@ -1,0 +1,19 @@
+{
+  "files": {
+    "config.json": "3ef2953dce0b3d9f7c1236549278f02eb238e58b3b7bb991339c2bfb936bea71",
+    "duplicate_log.csv": "9ee3ec654a9a8e51af23a903a3707e71a7b5299904b1f15336f41d2317edbfba",
+    "error_cases.csv": "9610db02f29d781b2cf114b2d7def79498031f108f59d4f2f883561200e8e2f9",
+    "inputs/gold.jsonl": "9582165e37f78826677a7f341d52e044c36b89062a5902cb5ab30bb8414d8df4",
+    "inputs/pred.jsonl": "d35c91dd4936bcab6c5ab5407d24105fe994e3fd1d523ea47b7506829b07df4c",
+    "inputs/schema.json": "5ee9c2e6c273bcc5eac765b2572bd230084ec1e0d0c551fe9ca2085c2eff0c9b",
+    "invalid_cases.csv": "216afab377491b34ae5818bf4e9e5661ef08bbb6ff0ce1e884bc216197301a58",
+    "matching_log.csv": "d7d83b20e03be2b9d34521e86bafdcfbda018ae88a8c3de573b79616d414c10e",
+    "normalization_log.csv": "38511242a10a51f9c9041b9919366c1af80ef2e94f0221898f26c2b028deb271",
+    "overall_metrics.json": "bce94101f8dc53fefd188f0da45edcef797e232b5fff3eb3246e07d5a6057143",
+    "unmatched_cases.csv": "5072024f6b38a47ffdd388cd91a53c241f3510974affacd05e892f3683723294"
+  },
+  "generated_by": "scripts/generate_release_golden.py",
+  "hash_method": "sha256",
+  "package_version": "1.0.0",
+  "release": "v1.0.0"
+}
