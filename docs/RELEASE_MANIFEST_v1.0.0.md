@@ -29,6 +29,12 @@ Git tag object and GitHub Release metadata are the authoritative release anchors
 
 ## Environment
 
+For byte-identical reproduction of the checked-in v1.0.0 golden artifacts,
+the release validation environment pins Python to `3.13.12`. Running the
+evaluator on another compatible Python patch version may still be valid, but
+`config.json` records the runtime Python version, so byte-level golden artifact
+hashes are expected to differ.
+
 The following environment was used for Phase 13 local release preparation.
 
 * Python version: `3.13.12`
@@ -245,7 +251,8 @@ uv run --locked pytest tests/protocol_v1
 ## CI Requirement
 
 CI for the release branch, PR, `main`, and final release tag must run the same
-release gates:
+release gates under Python `3.13.12`, because `config.json` records the runtime
+Python version and the committed golden artifact hashes are byte-level hashes:
 
 ```bash
 uv lock --check
